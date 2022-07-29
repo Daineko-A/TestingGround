@@ -52,6 +52,6 @@ join artists_movies am on mv.id = am.movie_id
 JOIN artists a on a.id = am.artist_id 
 WHERE a.FIRST_NAME like '%leo%';
 
-SELECT COUNT(*),  title from awards WHERE date > 2000 GROUP BY title  ; 
-SELECT AVG(id),  title from awards WHERE date > 2000 GROUP BY title  ; 
-SELECT SUM(id),  title from awards WHERE date > 2000 GROUP BY title  ; 
+SELECT COUNT(*),  title from awards WHERE date > 2000 GROUP BY title; 
+SELECT AVG(id),  title from awards WHERE date > 2000 GROUP BY title; 
+SELECT SUM(id),  title from awards WHERE date > 2000 GROUP BY title; 
