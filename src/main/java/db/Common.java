@@ -4,25 +4,16 @@ import java.sql.*;
 import java.util.stream.IntStream;
 
 public class Common {
-    static final String URL = "jdbc:mysql://localhost:30306/movie_store?useSSL=false";
-    static final String USER = "root";
-    static final String PASS = "root";
 
     public static void main(String[] args) {
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            System.out.println("done");
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-
 //            connection.setAutoCommit(false);
 //            preparedStatement.executeUpdate();
 //            preparedStatement.executeUpdate();
 //            preparedStatement.executeUpdate();
 //            connection.commit();
+//            connection.rollback();
 
-        try (Connection connection = DriverManager.getConnection(URL, USER, PASS)) {
+        try (Connection connection = ConnectionManager.getConnection()) {
             System.out.println("connect");
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT a.first_name, a.last_name, mv.title from movies mv \n" +
                     "join artists_movies am on mv.id = am.movie_id \n" +
