@@ -55,3 +55,4 @@ WHERE a.FIRST_NAME like '%leo%';
 SELECT COUNT(*),  title from awards WHERE date > 2000 GROUP BY title; 
 SELECT AVG(id),  title from awards WHERE date > 2000 GROUP BY title; 
 SELECT SUM(id),  title from awards WHERE date > 2000 GROUP BY title; 
+SELECT SUM(id),  title from awards WHERE date > 2000 GROUP BY title HAVING SUM(id) > 15; 

@@ -1,0 +1,36 @@
+package db;
+
+import java.sql.*;
+
+public class Common {
+    static final String URL = "jdbc:mysql://localhost:30306/movie_store?useSSL=false";
+    static final String USER = "root";
+    static final String PASS = "root";
+
+    public static void main(String[] args) {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            System.out.println("done");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        try (Connection connection = DriverManager.getConnection(URL, USER, PASS)) {
+            System.out.println("connect");
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT a.first_name, a.last_name, mv.title from movies mv \n" +
+                    "join artists_movies am on mv.id = am.movie_id \n" +
+                    "JOIN artists a on a.id = am.artist_id \n" +
+                    "WHERE a.FIRST_NAME like '%leo%'");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()) {
+                System.out.print(resultSet.getString("first_name") + " ");
+                System.out.print(resultSet.getString("last_name") + " ");
+                System.out.println(resultSet.getString("title"));
+            }
+            resultSet.close();
+            preparedStatement.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+}
