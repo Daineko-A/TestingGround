@@ -32,6 +32,7 @@ public class MovieStoreDao {
             preparedStatement.setString(1, String.valueOf(id));
 
             ResultSet resultSet = preparedStatement.executeQuery();
+            connection.close();
             if (resultSet.next()) {
                 return Optional.of(new Movie(
                         resultSet.getLong("id"),
