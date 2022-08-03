@@ -1,6 +1,7 @@
 package db;
 
 import java.sql.*;
+import java.util.stream.IntStream;
 
 public class Common {
     static final String URL = "jdbc:mysql://localhost:30306/movie_store?useSSL=false";
@@ -14,6 +15,12 @@ public class Common {
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
+
+//            connection.setAutoCommit(false);
+//            preparedStatement.executeUpdate();
+//            preparedStatement.executeUpdate();
+//            preparedStatement.executeUpdate();
+//            connection.commit();
 
         try (Connection connection = DriverManager.getConnection(URL, USER, PASS)) {
             System.out.println("connect");
