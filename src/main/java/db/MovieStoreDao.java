@@ -25,14 +25,13 @@ public class MovieStoreDao {
         return INSTANCE;
     }
 
-    public Optional<Movie> getMovieById(long id) {
+    public Optional<Movie> getMovfieById(long id) {
         try (Connection connection = ConnectionManager.getConnection()) {
             String sql = "SELECT id , title , release_date FROM movies WHERE id = (?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, String.valueOf(id));
 
             ResultSet resultSet = preparedStatement.executeQuery();
-            connection.close();
             if (resultSet.next()) {
                 return Optional.of(new Movie(
                         resultSet.getLong("id"),
