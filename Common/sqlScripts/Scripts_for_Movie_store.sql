@@ -56,3 +56,5 @@ SELECT COUNT(*),  title from awards WHERE date > 2000 GROUP BY title;
 SELECT AVG(id),  title from awards WHERE date > 2000 GROUP BY title; 
 SELECT SUM(id),  title from awards WHERE date > 2000 GROUP BY title; 
 SELECT SUM(id),  title from awards WHERE date > 2000 GROUP BY title HAVING SUM(id) > 15; 
+SELECT COUNT(*) from awards;
+SELECT m.id , title , release_date FROM movies m WHERE id = 1;

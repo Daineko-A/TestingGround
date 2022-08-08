@@ -1,6 +1,5 @@
 package tutorials.loops;
 
-import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 public class ForLoop {

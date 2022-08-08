@@ -1,7 +1,5 @@
 package leetcode;
 
-import java.util.LinkedList;
-
 /**
  * Definition for singly-linked list.
  * public class ListNode {
