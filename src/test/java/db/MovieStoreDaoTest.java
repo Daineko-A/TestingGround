@@ -2,7 +2,7 @@ package db;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
 
 public class MovieStoreDaoTest {
 
@@ -11,7 +11,7 @@ public class MovieStoreDaoTest {
     }
 
     @Test
-    public void getMovfieById() {
+    public void getMovieById() {
         MovieStoreDao instance = MovieStoreDao.getInstance();
         assertNotNull(instance.getMovfieById(1L).get());
     }
