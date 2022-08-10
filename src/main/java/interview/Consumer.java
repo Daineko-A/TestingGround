@@ -45,19 +45,20 @@ public class Consumer {
 
     @Test
     public void nonMultiThreadScenarioHeavyTest() {
-        long start = System.currentTimeMillis();
+        long startTime = System.currentTimeMillis();
         Random random = new Random();
         for (int i = 0; i < 10000000; i++) {
             accept(random.nextInt(1024));
         }
         System.out.println("result: " + mean());
-        System.out.print("\n" + "Common time nonMultiThreadScenarioHeavyTest: Sec: " + TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis() - start));
-        System.out.println(" or MiliSec: " + (System.currentTimeMillis() - start) + "\n");
+        System.out.print("\n" + "Common time nonMultiThreadScenarioHeavyTest: Sec: "
+                + TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis() - startTime));
+        System.out.println(" or MiliSec: " + (System.currentTimeMillis() - startTime) + "\n");
     }
 
     @Test
     public void nonMultiThreadScenarioTest() {
-        long start = System.currentTimeMillis();
+        long startTime = System.currentTimeMillis();
         Random random = new Random();
         for (int a = 0; a < 10; a++) {
             for (int i = 0; i < 1000; i++) {
@@ -65,8 +66,9 @@ public class Consumer {
             }
             System.out.println("result: " + mean());
         }
-        System.out.print("\n" + "Common time nonMultiThreadScenarioTest: Sec: " + TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis() - start));
-        System.out.println(" or MiliSec: " + (System.currentTimeMillis() - start) + "\n");
+        System.out.print("\n" + "Common time nonMultiThreadScenarioTest: Sec: "
+                + TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis() - startTime));
+        System.out.println(" or MiliSec: " + (System.currentTimeMillis() - startTime) + "\n");
     }
 
     @Test
