@@ -13,6 +13,8 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
 
 public class Consumer {
     static final Long PERIOD = TimeUnit.MINUTES.toMillis(5);
@@ -50,25 +52,24 @@ public class Consumer {
         for (int i = 0; i < 10000000; i++) {
             accept(random.nextInt(1024));
         }
-        System.out.println("result: " + mean());
-        System.out.print("\n" + "Common time nonMultiThreadScenarioHeavyTest: Sec: "
-                + TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis() - startTime));
-        System.out.println(" or MiliSec: " + (System.currentTimeMillis() - startTime) + "\n");
+        System.out.println("Duration HeavyTest MiliSec: " + (System.currentTimeMillis() - startTime));
+        assertNotEquals(0, mean() % 1, 0.0);
     }
 
     @Test
     public void nonMultiThreadScenarioTest() {
         long startTime = System.currentTimeMillis();
+        ArrayList<Double> results = new ArrayList<>();
         Random random = new Random();
-        for (int a = 0; a < 10; a++) {
-            for (int i = 0; i < 1000; i++) {
+        int iteration = 10;
+        for (int a = 0; a < iteration; a++) {
+            for (int i = 0; i < 100; i++) {
                 accept(random.nextInt(1024));
             }
-            System.out.println("result: " + mean());
+            results.add(mean());
         }
-        System.out.print("\n" + "Common time nonMultiThreadScenarioTest: Sec: "
-                + TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis() - startTime));
-        System.out.println(" or MiliSec: " + (System.currentTimeMillis() - startTime) + "\n");
+        System.out.println("Duration MiliSec: " + (System.currentTimeMillis() - startTime));
+        assertTrue(results.size() == iteration);
     }
 
     @Test
