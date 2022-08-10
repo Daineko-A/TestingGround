@@ -3,6 +3,7 @@ package interview;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -39,10 +40,21 @@ public class Consumer {
             }
         }
 
+        clearOldElements(startTime);
+
         return numbers.stream()
                 .mapToDouble(d -> d)
                 .average()
                 .orElse(0.0);
+    }
+
+    private void clearOldElements(long startTime) {
+        ArrayList<Long> keys = new ArrayList<>(acceptedInt.keySet());
+        keys.forEach(time -> {
+            if (time < startTime) {
+                acceptedInt.remove(time);
+            }
+        });
     }
 
     @Test
@@ -63,7 +75,7 @@ public class Consumer {
         Random random = new Random();
         int iteration = 10;
         for (int a = 0; a < iteration; a++) {
-            for (int i = 0; i < 100; i++) {
+            for (int i = 0; i < 1000; i++) {
                 accept(random.nextInt(1024));
             }
             results.add(mean());
