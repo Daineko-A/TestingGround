@@ -14,7 +14,6 @@ import java.util.stream.Stream;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertTrue;
 
 public class Consumer {
     static final Long PERIOD = TimeUnit.MINUTES.toMillis(5);
@@ -63,7 +62,7 @@ public class Consumer {
         long startTime = System.currentTimeMillis();
         ArrayList<Double> results = new ArrayList<>();
         Random random = new Random();
-        int iteration = 10;
+        int iteration = 100;
         for (int a = 0; a < iteration; a++) {
             for (int i = 0; i < 1000; i++) {
                 accept(random.nextInt(1024));
@@ -71,7 +70,7 @@ public class Consumer {
             results.add(mean());
         }
         System.out.println("Duration MiliSec: " + (System.currentTimeMillis() - startTime));
-        assertTrue(results.size() == iteration);
+        assertEquals(results.size(), iteration);
     }
 
     @Test
