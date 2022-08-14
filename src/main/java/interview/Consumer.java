@@ -16,7 +16,8 @@ import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 public class Consumer {
-    static final Long PERIOD = TimeUnit.MINUTES.toMillis(5);
+    //    static final Long PERIOD = TimeUnit.MINUTES.toMillis(5);
+    static final Long PERIOD = 100L;
     private final Map<Long, List<Integer>> acceptedInt = new LinkedHashMap<>();
 
     public void accept(int number) {
@@ -52,6 +53,7 @@ public class Consumer {
         ArrayList<Long> keys = new ArrayList<>(acceptedInt.keySet());
         keys.forEach(time -> {
             if (time < startTime) {
+                System.out.print(".");
                 acceptedInt.remove(time);
             }
         });
