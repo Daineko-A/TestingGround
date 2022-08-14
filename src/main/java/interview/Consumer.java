@@ -3,7 +3,6 @@ package interview;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,9 +30,7 @@ public class Consumer {
         long startTime = System.currentTimeMillis() - PERIOD;
         List<Integer> numbers = new ArrayList<>();
 
-        Iterator<Map.Entry<Long, List<Integer>>> iterator = acceptedInt.entrySet().iterator();
-        while (iterator.hasNext()) {
-            Map.Entry<Long, List<Integer>> nextIterator = iterator.next();
+        for (Map.Entry<Long, List<Integer>> nextIterator : acceptedInt.entrySet()) {
             if (nextIterator.getKey() >= startTime) {
                 numbers.addAll(nextIterator.getValue());
             }
@@ -47,6 +44,10 @@ public class Consumer {
                 .orElse(0.0);
     }
 
+    /**
+     * This is a redundant element for the test task.
+     * But if it was production, I would clean unused elements, otherwise we would fall out with an error.
+     */
     private void clearOldElements(long startTime) {
         ArrayList<Long> keys = new ArrayList<>(acceptedInt.keySet());
         keys.forEach(time -> {

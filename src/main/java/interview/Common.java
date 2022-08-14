@@ -1,12 +1,16 @@
 package interview;
 
+import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class Common {
-    public static void main(String[] args) {
+
+    @Test
+    public void subListTest() {
         long start = System.currentTimeMillis();
         System.out.println("Sec: " + TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis() - start));
         System.out.println("MiliSec: " + (System.currentTimeMillis() - start));
