@@ -3,6 +3,7 @@ package interview;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,8 +17,7 @@ import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 public class Consumer {
-    //    static final Long PERIOD = TimeUnit.MINUTES.toMillis(5);
-    static final Long PERIOD = 100L;
+    static final Long PERIOD = TimeUnit.MINUTES.toMillis(5);
     private final Map<Long, List<Integer>> acceptedInt = new LinkedHashMap<>();
 
     public void accept(int number) {
@@ -31,32 +31,20 @@ public class Consumer {
         long startTime = System.currentTimeMillis() - PERIOD;
         List<Integer> numbers = new ArrayList<>();
 
-        for (Map.Entry<Long, List<Integer>> nextIterator : acceptedInt.entrySet()) {
+        Iterator<Map.Entry<Long, List<Integer>>> iterator = acceptedInt.entrySet().iterator();
+        while (iterator.hasNext()) {
+            Map.Entry<Long, List<Integer>> nextIterator = iterator.next();
             if (nextIterator.getKey() >= startTime) {
                 numbers.addAll(nextIterator.getValue());
+            } else {
+                iterator.remove();
             }
         }
-
-        clearOldElements(startTime);
 
         return numbers.stream()
                 .mapToDouble(d -> d)
                 .average()
                 .orElse(0.0);
-    }
-
-    /**
-     * This is a redundant element for the test task.
-     * But if it was production, I would clean unused elements, otherwise we would fall out with an error.
-     */
-    private void clearOldElements(long startTime) {
-        ArrayList<Long> keys = new ArrayList<>(acceptedInt.keySet());
-        keys.forEach(time -> {
-            if (time < startTime) {
-                System.out.print(".");
-                acceptedInt.remove(time);
-            }
-        });
     }
 
     @Test
