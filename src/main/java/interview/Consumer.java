@@ -8,16 +8,14 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
-import java.util.TreeMap;
 import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
 public class Consumer {
-    static final Long PERIOD = 100L;
+    static final Long PERIOD = TimeUnit.MINUTES.toMillis(5);
+//    static final Long PERIOD = 100L;
     private final Map<Long, List<Integer>> acceptedInt = new LinkedHashMap<>();
 
     public void accept(int number) {
@@ -51,7 +49,7 @@ public class Consumer {
         for (int i = 0; i < 10000000; i++) {
             accept(random.nextInt(1024));
         }
-        System.out.println("Duration HeavyTest MiliSec: " + (System.currentTimeMillis() - startTime));
+        System.out.println("Duration HeavyTest Millis: " + (System.currentTimeMillis() - startTime));
         assertNotEquals(0, mean() % 1, 0.0);
     }
 
@@ -67,7 +65,7 @@ public class Consumer {
             }
             results.add(mean());
         }
-        System.out.println("Duration MiliSec: " + (System.currentTimeMillis() - startTime));
+        System.out.println("Duration Millis: " + (System.currentTimeMillis() - startTime));
         assertEquals(results.size(), iteration);
     }
 

@@ -29,6 +29,4 @@ public class SetTests {
 
         assertEquals(setOne, setTwo);
     }
-
-
 }
