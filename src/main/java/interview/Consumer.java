@@ -8,6 +8,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.TreeMap;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -16,14 +17,11 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
 public class Consumer {
-    static final Long PERIOD = TimeUnit.MINUTES.toMillis(5);
+    static final Long PERIOD = 100L;
     private final Map<Long, List<Integer>> acceptedInt = new LinkedHashMap<>();
 
     public void accept(int number) {
-        acceptedInt.merge(
-                System.currentTimeMillis(),
-                List.of(number),
-                (oldVal, newVal) -> Stream.concat(oldVal.stream(), newVal.stream()).collect(Collectors.toList()));
+        acceptedInt.computeIfAbsent(System.currentTimeMillis(), k -> new ArrayList<>()).add(number);
     }
 
     public Double mean() {
@@ -64,7 +62,7 @@ public class Consumer {
         Random random = new Random();
         int iteration = 100;
         for (int a = 0; a < iteration; a++) {
-            for (int i = 0; i < 1000; i++) {
+            for (int i = 0; i < 100000; i++) {
                 accept(random.nextInt(1024));
             }
             results.add(mean());
@@ -75,7 +73,6 @@ public class Consumer {
 
     @Test
     public void nonMultiThreadScenarioWithOneElementTest() {
-        long start = System.currentTimeMillis();
         Random random = new Random();
         accept(random.nextInt(1024));
         assertEquals(0, mean() % 1, 0.0);
