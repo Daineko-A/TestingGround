@@ -44,11 +44,11 @@ SELECT a.first_name, a.last_name FROM artists a where a.id = ( SELECT aw.artist_
 SELECT aw.date FROM awards aw;
 SELECT SUM(w.date) from (SELECT date FROM awards) AS w;
 
-SELECT COUNT(aw.id) from awards aw inner join artists a on aw.artist_id = a.id where a.first_name = 'Brad';
+SELECT COUNT(aw.id) from awards aw inner JOIN artists a on aw.artist_id = a.id where a.first_name = 'Brad';
 
 
 SELECT a.first_name, a.last_name, mv.title from movies mv 
-join artists_movies am on mv.id = am.movie_id 
+JOIN artists_movies am on mv.id = am.movie_id 
 JOIN artists a on a.id = am.artist_id 
 WHERE a.FIRST_NAME like '%leo%';
 
