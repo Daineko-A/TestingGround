@@ -64,6 +64,11 @@ INSERT INTO artists_movies (artist_id, movie_id) VALUES (6 ,3);
 INSERT INTO artists_movies (artist_id, movie_id) VALUES (14 ,3);
 INSERT INTO artists_movies (artist_id, movie_id) VALUES (15 ,3);
 
+
+--ALTER TABLE table_name ADD column_name datatype;
+--ALTER TABLE users ADD country TEXT default "United States";
+--ALTER TABLE table_name RENAME COLUMN old_name TO new_name;
+
 # DROP
 -- DROP DATABASE DATABASE movie_store;
 -- DROP TABLE artists;
