@@ -52,6 +52,9 @@ JOIN artists_movies am on mv.id = am.movie_id
 JOIN artists a on a.id = am.artist_id 
 WHERE a.FIRST_NAME like '%leo%';
 
+SELECT MAX(release_date) from movies where release_date NOT IN (SELECT MAX(release_date) FROM movies);
+SELECT release_date  FROM movies order by release_date;
+
 SELECT COUNT(*),  title from awards WHERE date > 2000 GROUP BY title; 
 SELECT AVG(id),  title from awards WHERE date > 2000 GROUP BY title; 
 SELECT SUM(id),  title from awards WHERE date > 2000 GROUP BY title; 
