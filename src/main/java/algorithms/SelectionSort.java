@@ -14,7 +14,17 @@ public class SelectionSort {
 
     private int[] selectionSortSort(int[] array) {
         for (int i = 0; i < array.length; i++) {
-
+            int min = array[i];
+            int minCursor = i;
+            for (int j = i + 1; j < array.length; j++) {
+                if (array[j] < min) {
+                    min = array[j];
+                    minCursor = j;
+                }
+            }
+            int tmp = array[i];
+            array[i] = min;
+            array[minCursor] = tmp;
         }
 
         return array;
