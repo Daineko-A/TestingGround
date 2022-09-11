@@ -15,7 +15,7 @@ import static org.junit.Assert.assertNotEquals;
 
 public class Consumer {
     static final Long PERIOD = TimeUnit.MINUTES.toMillis(5);
-//    static final Long PERIOD = 100L;
+    //    static final Long PERIOD = 100L;
     private final Map<Long, List<Integer>> acceptedInt = new LinkedHashMap<>();
 
     public void accept(int number) {

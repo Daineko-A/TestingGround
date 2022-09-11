@@ -22,7 +22,7 @@ public class Common {
                     "JOIN artists a on a.id = am.artist_id \n" +
                     "WHERE a.FIRST_NAME like '%leo%'");
             ResultSet resultSet = preparedStatement.executeQuery();
-            while(resultSet.next()) {
+            while (resultSet.next()) {
                 System.out.print(resultSet.getString("first_name") + " ");
                 System.out.print(resultSet.getString("last_name") + " ");
                 System.out.println(resultSet.getString("title"));

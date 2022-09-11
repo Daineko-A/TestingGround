@@ -23,7 +23,7 @@ public class ReverseLinkedList206 {
 
     public void printListNode(ListNode head) {
         System.out.print(head.val + " ");
-        if(head.next == null) {
+        if (head.next == null) {
             System.out.println();
             return;
         }

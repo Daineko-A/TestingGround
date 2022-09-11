@@ -32,12 +32,12 @@ public class Common {
 
     @Test
     public void name() {
-        List<Integer>integerList = new ArrayList<>();
+        List<Integer> integerList = new ArrayList<>();
         integerList.add(1);
         integerList.add(2);
         integerList.add(3);
 
-        integerList.stream().map(i ->i + 10).forEach(System.out::println);
+        integerList.stream().map(i -> i + 10).forEach(System.out::println);
 
         System.out.println(integerList);
     }

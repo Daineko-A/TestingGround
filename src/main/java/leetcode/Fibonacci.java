@@ -10,7 +10,7 @@ public class Fibonacci {
         if (n == 0) {
             return sum;
         }
-        while (n-1 > i++) {
+        while (n - 1 > i++) {
             sum = prev + next;
             prev = next;
             next = sum;
@@ -19,7 +19,7 @@ public class Fibonacci {
     }
 
     public static void main(String[] args) {
-        int a = 1/0;
+        int a = 1 / 0;
         System.out.println(fib(3));
     }
 }

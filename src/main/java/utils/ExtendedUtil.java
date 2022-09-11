@@ -1,5 +1,5 @@
 package utils;
 
-public class ExtendedUtil extends SimpleUtil{
+public class ExtendedUtil extends SimpleUtil {
 
 }
