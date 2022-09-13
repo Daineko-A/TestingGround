@@ -1,7 +1,26 @@
 package leetcode;
 
+import org.junit.Test;
+
 public class Fibonacci {
-    public static int fib(int n) {
+
+    @Test
+    public void fibTest() {
+        System.out.println(fib(17));
+    }
+
+    @Test
+    public void fibRecursionTest() {
+        System.out.println(fibRecursion(17));
+    }
+
+    private int fibRecursion(int n) {
+        int start = 0;
+        if (n == 0 || n == 1) return n;
+        return fibRecursion(n - 1) + fibRecursion(n - 2);
+    }
+
+    private int fib(int n) {
         int prev = 0;
         int next = 1;
         int i = 1;
@@ -16,10 +35,5 @@ public class Fibonacci {
             next = sum;
         }
         return prev + next;
-    }
-
-    public static void main(String[] args) {
-        int a = 1 / 0;
-        System.out.println(fib(3));
     }
 }
