@@ -7,7 +7,7 @@ import java.util.Random;
 public class ArbitraryArray {
 
     public static int[] getArbitraryArrayInt(int limit) {
-        return new Random().ints(limit, -1000, 1000).toArray();
+        return new Random().ints(limit, 0, 1000).toArray();
     }
 
     @Test
