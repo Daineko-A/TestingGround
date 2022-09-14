@@ -7,7 +7,7 @@ public class RadixSort {
 
     @Test
     public void radixSortTest() {
-        for (int element : radixSort(ArbitraryArray.getArbitraryArrayInt(15))) {
+        for (int element : radixSort(ArbitraryArray.getArbitraryArrayInt(5))) {
             System.out.println(element);
         }
     }
