@@ -1,4 +1,4 @@
-package algorithms;
+package algorithms.sorts;
 
 import algorithms.utils.ArbitraryArray;
 import org.junit.Test;
