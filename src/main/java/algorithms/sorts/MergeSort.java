@@ -25,6 +25,7 @@ public class MergeSort {
         for (int i = 0; i < mid; i++) {
             arrayLeft[i] = array[i];
         }
+        //System.arraycopy
         for (int i = mid; i < array.length; i++){
             arrayRight[i - mid] = array[i];
         }
