@@ -18,8 +18,9 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 public class DateTest {
-    private String format = "EEE, dd MMM yyyy HH:mm:ss ZZZZ";
-    private String shortFormat = "dd MMMM yyyy";
+    private String format = "EEE, dd MM yyyy HH:mm:ss ZZZZ";
+    private String longFormat = "EEE, dd MMM yyyy HH:mm:ss ZZZZ";
+    private String shortFormat = "yyyy-MM-dd";
     private String stringDate = "Thu, 01 Sep 2022 11:09:23 GMT+03:00";
     private Date date = new Date(968706000000L);
     private DateTimeFormatterBuilder dateTimeFormatterBuilder = new DateTimeFormatterBuilder();
@@ -50,6 +51,12 @@ public class DateTest {
 
         for (Locale loc : locales) {
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat(format, loc);
+//            simpleDateFormat.setCalendar(calendar);
+            System.out.println("Loc:" + loc + " - " + simpleDateFormat.format(calendar.getTime()));
+        }
+
+        for (Locale loc : locales) {
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat(shortFormat, loc);
 //            simpleDateFormat.setCalendar(calendar);
             System.out.println("Loc:" + loc + " - " + simpleDateFormat.format(calendar.getTime()));
         }
