@@ -16,7 +16,7 @@ import java.util.Locale;
 public class DateTest {
     private String format = "EEE, dd MMM yyyy HH:mm:ss ZZZZ";
     private String shortFormat = "dd MMMM yyyy";
-    private String stringDate = "Thu, 01 Sept 2022 11:09:23 GMT+03:00";
+    private String stringDate = "Thu, 01 Sep 2022 11:09:23 GMT+03:00";
     private Date date = new Date(968706000000L);
     private DateTimeFormatterBuilder dateTimeFormatterBuilder = new DateTimeFormatterBuilder();
 
