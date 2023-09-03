@@ -1,7 +1,7 @@
 package common.strings;
 
-import org.junit.Test;
 import org.apache.commons.lang3.StringUtils;
+import org.junit.Test;
 
 public class StringTest {
 
